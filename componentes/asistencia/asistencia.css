@@ -1,0 +1,334 @@
+.contenedor-asistencia {
+    max-width: 900px;  /* Aumentado de 800px */
+    margin: 0 auto;
+    padding: 30px;  /* Aumentado de 20px */
+    font-family: Arial, sans-serif;
+    font-size: 1.1em;  /* Tamaño de fuente más grande */
+    background-color: #f5f5f5;
+    border-radius: 5%;
+}
+
+.header-profesor {
+    margin-bottom: 30px;  /* Más espacio */
+    padding-bottom: 25px;  /* Más espacio */
+}
+
+.info-profesor h2 {
+    font-size: 1.8em;  /* Más grande */
+    margin-bottom: 10px;
+}
+
+.info-profesor p {
+    font-size: 1.2em;  /* Más grande */
+}
+
+.fecha-contenedor {
+    margin-bottom: 30px;  /* Más espacio */
+}
+
+.fecha-contenedor label {
+    font-size: 1.2em;  /* Más grande */
+    margin-right: 15px;  /* Más espacio */
+}
+
+.fecha-contenedor input {
+    padding: 10px 15px;  /* Más grande */
+    font-size: 1.1em;  /* Más grande */
+}
+
+.alumnos-titulo {
+    font-size: 1.5em;  /* Más grande */
+    margin-bottom: 20px;  /* Más espacio */
+}
+
+.alumno-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;  /* Más grande (antes 10px) */
+    margin: 10px 0;  /* Más espacio (antes 5px) */
+    background: #f5f5f5;
+    border-radius: 6px;  /* Más redondeado */
+    font-size: 1.1em;  /* Más grande */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Sombra suave */
+}
+
+.alumno-numero {
+    width: 40px;  /* Más ancho (antes 30px) */
+    font-weight: bold;
+    font-size: 1.2em;  /* Más grande */
+}
+
+.nombre-alumno {
+    flex-grow: 1;
+    margin: 0 20px;  /* Más espacio (antes 15px) */
+    font-size: 1.1em;  /* Más grande */
+}
+
+.asistencia-acciones {
+    display: flex;
+    gap: 12px;  /* Más espacio entre botones (antes 8px) */
+}
+
+.asistencia-btn {
+    padding: 8px 16px;  /* Más grande (antes 5px 10px) */
+    border: none;
+    border-radius: 5px;  /* Más redondeado */
+    cursor: pointer;
+    font-size: 1em;  /* Tamaño estándar */
+    font-weight: bold;  /* Texto en negrita */
+    transition: all 0.3s ease;  /* Transición suave */
+}
+
+.asistencia-btn:hover {
+    transform: scale(1.05);  /* Efecto hover */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);  /* Sombra al hover */
+}
+
+.logout-btn {
+    padding: 10px 20px;  /* Más grande */
+    font-size: 1.1em;  /* Más grande */
+    border-radius: 5px;  /* Más redondeado */
+}
+
+.notificacion {
+    position: fixed;
+    bottom: 30px;  /* Más arriba (antes 20px) */
+    right: 30px;  /* Más espacio (antes 20px) */
+    padding: 20px 30px;  /* Más grande (antes 15px 25px) */
+    border-radius: 6px;  /* Más redondeado */
+    color: white;
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+    font-size: 1.2em;  /* Más grande */
+    font-weight: bold;  /* Negrita */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);  /* Sombra más pronunciada */
+}
+
+/* Colores de los botones */
+.asistencia-btn.presente { 
+    background: #4CAF50; 
+    color: white; 
+}
+.asistencia-btn.ausente { 
+    background: #f44336; 
+    color: white; 
+}
+.asistencia-btn.tarde { 
+    background: #FFC107; 
+    color: black; 
+}
+
+/* Animación de notificación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }  /* Más movimiento (antes 20px) */
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efectos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contenedor-asistencia {
+        padding: 20px 15px;
+        font-size: 1em;
+    }
+    
+    .alumno-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .asistencia-acciones {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Estilos generales */
+.contenedor-asistencia {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+.header-asistencia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.profesor-info h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.profesor-info p {
+    margin: 5px 0 0;
+    color: #7f8c8d;
+}
+
+.btn-regresar {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-regresar:hover {
+    background: #2980b9;
+}
+
+/* Selector de fecha */
+.fecha-contenedor {
+    margin-bottom: 20px;
+}
+
+.fecha-contenedor label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.fecha-input {
+    padding: 8px 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Lista de alumnos */
+.alumnos-contenedor {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.titulo-lista {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+/* Tabla de alumnos */
+.tabla-alumnos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.tabla-alumnos th {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    text-align: left;
+    color: #34495e;
+    font-weight: 600;
+}
+
+.tabla-alumnos td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.tabla-alumnos tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estados de asistencia */
+.alumno.presente {
+    background-color: rgba(46, 204, 113, 0.1);
+}
+
+.alumno.ausente {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Botones de asistencia */
+.btn-asistencia {
+    padding: 6px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-asistencia.presente {
+    background-color: #eafaf1;
+    color: #27ae60;
+}
+
+.btn-asistencia.presente.activo {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-asistencia.ausente {
+    background-color: #fdedec;
+    color: #e74c3c;
+}
+
+.btn-asistencia.ausente.activo {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Mensajes */
+.cargando, .sin-alumnos, .error {
+    padding: 15px;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.cargando {
+    background-color: #f8f9fa;
+    color: #7f8c8d;
+}
+
+.sin-alumnos {
+    background-color: #f9f9f9;
+    color: #95a5a6;
+}
+
+.error {
+    background-color: #fdedec;
+    color: #e74c3c;
+}
+
+/* Notificaciones */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+.notificacion.exito {
+    background-color: #2ecc71;
+}
+
+.notificacion.error {
+    background-color: #e74c3c;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}

@@ -1,0 +1,133 @@
+.formulario-registro {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: auto;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 93%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.2);
+}
+
+/* Estilo para el contenedor de la contraseña y el ícono */
+.contrasena-contenedor {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icono-ojo {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Estilo del botón */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Efecto de sombra en el formulario */
+.formulario-registro {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+    .formulario-registro {
+        width: 90%;
+    }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('https://fondosmil.co/fondo/17016.jpg');
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor para alinear los botones */
+.contenedor-botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Estilo del botón de registro */
+.boton-registrar {
+    width: 100%;
+    padding: 12px;
+    background-color: #0cee05;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-registrar:hover {
+    background-color: #39b135;
+}
+
+/* Estilo del botón de volver */
+.boton-volver {
+    margin-top: 15px;
+    width: 22%;
+    padding: 8px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-volver:hover {
+    background-color: #0b0069;
+}

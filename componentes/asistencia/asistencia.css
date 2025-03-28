@@ -1,334 +1,316 @@
-.contenedor-asistencia {
-    max-width: 900px;  /* Aumentado de 800px */
-    margin: 0 auto;
-    padding: 30px;  /* Aumentado de 20px */
-    font-family: Arial, sans-serif;
-    font-size: 1.1em;  /* Tamaño de fuente más grande */
-    background-color: #f5f5f5;
-    border-radius: 5%;
-}
-
-.header-profesor {
-    margin-bottom: 30px;  /* Más espacio */
-    padding-bottom: 25px;  /* Más espacio */
-}
-
-.info-profesor h2 {
-    font-size: 1.8em;  /* Más grande */
-    margin-bottom: 10px;
-}
-
-.info-profesor p {
-    font-size: 1.2em;  /* Más grande */
-}
-
-.fecha-contenedor {
-    margin-bottom: 30px;  /* Más espacio */
-}
-
-.fecha-contenedor label {
-    font-size: 1.2em;  /* Más grande */
-    margin-right: 15px;  /* Más espacio */
-}
-
-.fecha-contenedor input {
-    padding: 10px 15px;  /* Más grande */
-    font-size: 1.1em;  /* Más grande */
-}
-
-.alumnos-titulo {
-    font-size: 1.5em;  /* Más grande */
-    margin-bottom: 20px;  /* Más espacio */
-}
-
-.alumno-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;  /* Más grande (antes 10px) */
-    margin: 10px 0;  /* Más espacio (antes 5px) */
-    background: #f5f5f5;
-    border-radius: 6px;  /* Más redondeado */
-    font-size: 1.1em;  /* Más grande */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Sombra suave */
-}
-
-.alumno-numero {
-    width: 40px;  /* Más ancho (antes 30px) */
-    font-weight: bold;
-    font-size: 1.2em;  /* Más grande */
-}
-
-.nombre-alumno {
-    flex-grow: 1;
-    margin: 0 20px;  /* Más espacio (antes 15px) */
-    font-size: 1.1em;  /* Más grande */
-}
-
-.asistencia-acciones {
-    display: flex;
-    gap: 12px;  /* Más espacio entre botones (antes 8px) */
-}
-
-.asistencia-btn {
-    padding: 8px 16px;  /* Más grande (antes 5px 10px) */
-    border: none;
-    border-radius: 5px;  /* Más redondeado */
-    cursor: pointer;
-    font-size: 1em;  /* Tamaño estándar */
-    font-weight: bold;  /* Texto en negrita */
-    transition: all 0.3s ease;  /* Transición suave */
-}
-
-.asistencia-btn:hover {
-    transform: scale(1.05);  /* Efecto hover */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);  /* Sombra al hover */
-}
-
-.logout-btn {
-    padding: 10px 20px;  /* Más grande */
-    font-size: 1.1em;  /* Más grande */
-    border-radius: 5px;  /* Más redondeado */
-}
-
-.notificacion {
-    position: fixed;
-    bottom: 30px;  /* Más arriba (antes 20px) */
-    right: 30px;  /* Más espacio (antes 20px) */
-    padding: 20px 30px;  /* Más grande (antes 15px 25px) */
-    border-radius: 6px;  /* Más redondeado */
-    color: white;
-    z-index: 1000;
-    animation: fadeIn 0.3s;
-    font-size: 1.2em;  /* Más grande */
-    font-weight: bold;  /* Negrita */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);  /* Sombra más pronunciada */
-}
-
-/* Colores de los botones */
-.asistencia-btn.presente { 
-    background: #4CAF50; 
-    color: white; 
-}
-.asistencia-btn.ausente { 
-    background: #f44336; 
-    color: white; 
-}
-.asistencia-btn.tarde { 
-    background: #FFC107; 
-    color: black; 
-}
-
-/* Animación de notificación */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }  /* Más movimiento (antes 20px) */
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Efectos para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .contenedor-asistencia {
-        padding: 20px 15px;
-        font-size: 1em;
-    }
-    
-    .alumno-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    
-    .asistencia-acciones {
-        width: 100%;
-        justify-content: space-between;
-    }
-}
-
-/* Estilos generales */
-.contenedor-asistencia {
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --success-color: #4cc9f0;
+    --danger-color: #f72585;
+    --warning-color: #f8961e;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+  
+  .contenedor-asistencia {
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Header */
-.header-asistencia {
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Header */
+  .header-asistencia {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid #e0e0e0;
-}
-
-.profesor-info h2 {
+  }
+  
+  .titulo-principal {
+    font-size: 2rem;
+    color: var(--primary-color);
     margin: 0;
-    color: #2c3e50;
-    font-size: 1.5rem;
-}
-
-.profesor-info p {
-    margin: 5px 0 0;
-    color: #7f8c8d;
-}
-
-.btn-regresar {
-    background: #3498db;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  
+  .btn-regresar {
+    background: var(--primary-color);
     color: white;
     border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
     cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.btn-regresar:hover {
-    background: #2980b9;
-}
-
-/* Selector de fecha */
-.fecha-contenedor {
-    margin-bottom: 20px;
-}
-
-.fecha-contenedor label {
-    margin-right: 10px;
-    font-weight: bold;
-    color: #34495e;
-}
-
-.fecha-input {
-    padding: 8px 12px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
     font-size: 1rem;
-}
-
-/* Lista de alumnos */
-.alumnos-contenedor {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-}
-
-.titulo-lista {
-    margin-top: 0;
-    color: #2c3e50;
-    border-bottom: 1px solid #ecf0f1;
-    padding-bottom: 10px;
-}
-
-/* Tabla de alumnos */
-.tabla-alumnos {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-.tabla-alumnos th {
-    background-color: #f8f9fa;
-    padding: 12px 15px;
-    text-align: left;
-    color: #34495e;
     font-weight: 600;
-}
-
-.tabla-alumnos td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #ecf0f1;
-}
-
-.tabla-alumnos tr:hover {
-    background-color: #f8f9fa;
-}
-
-/* Estados de asistencia */
-.alumno.presente {
-    background-color: rgba(46, 204, 113, 0.1);
-}
-
-.alumno.ausente {
-    background-color: rgba(231, 76, 60, 0.1);
-}
-
-/* Botones de asistencia */
-.btn-asistencia {
-    padding: 6px 12px;
-    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+  }
+  
+  .btn-regresar:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+  }
+  
+  /* Controles de fecha */
+  .fecha-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background: var(--light-color);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+  }
+  
+  .fecha-contenedor label {
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+  }
+  
+  .fecha-input {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    flex-grow: 1;
+    max-width: 200px;
+  }
+  
+  .fecha-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+  }
+  
+  .btn-actualizar {
+    background: var(--success-color);
+    color: white;
     border: none;
-    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
     cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.2s;
-}
-
-.btn-asistencia.presente {
-    background-color: #eafaf1;
-    color: #27ae60;
-}
-
-.btn-asistencia.presente.activo {
-    background-color: #2ecc71;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  
+  .btn-actualizar:hover {
+    background: #3aa8d8;
+    transform: translateY(-2px);
+  }
+  
+  /* Información del grado */
+  .info-grado {
+    background: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
     color: white;
-}
-
-.btn-asistencia.ausente {
-    background-color: #fdedec;
-    color: #e74c3c;
-}
-
-.btn-asistencia.ausente.activo {
-    background-color: #e74c3c;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .info-grado h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+  
+  .info-grado p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+  }
+  
+  /* Tabla de alumnos */
+  .tabla-contenedor {
+    overflow-x: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .tabla-alumnos {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  .tabla-alumnos thead {
+    background: var(--primary-color);
     color: white;
-}
-
-/* Mensajes */
-.cargando, .sin-alumnos, .error {
-    padding: 15px;
-    text-align: center;
-    margin: 20px 0;
-    border-radius: 4px;
-}
-
-.cargando {
-    background-color: #f8f9fa;
-    color: #7f8c8d;
-}
-
-.sin-alumnos {
-    background-color: #f9f9f9;
-    color: #95a5a6;
-}
-
-.error {
-    background-color: #fdedec;
-    color: #e74c3c;
-}
-
-/* Notificaciones */
-.notificacion {
+  }
+  
+  .tabla-alumnos th {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .tabla-alumnos td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+  }
+  
+  .tabla-alumnos tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .tabla-alumnos tr:hover {
+    background-color: rgba(67, 97, 238, 0.05);
+  }
+  
+  /* Selector de asistencia */
+  .select-asistencia {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 150px;
+  }
+  
+  .select-asistencia:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+  }
+  
+  .select-asistencia option {
+    padding: 0.5rem;
+  }
+  
+  /* Notificaciones */
+  .notificacion {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    border-radius: 4px;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
     color: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: var(--box-shadow);
     z-index: 1000;
-    animation: slideIn 0.3s ease-out;
-}
-
-.notificacion.exito {
-    background-color: #2ecc71;
-}
-
-.notificacion.error {
-    background-color: #e74c3c;
-}
-
-@keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
+    animation: slideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 350px;
+  }
+  
+  .notificacion.exito {
+    background: linear-gradient(135deg, #4cc9f0 0%, #4895ef 100%);
+  }
+  
+  .notificacion.error {
+    background: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+  }
+  
+  .notificacion-icono {
+    font-size: 1.5rem;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contenedor-asistencia {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+    
+    .header-asistencia {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .fecha-contenedor {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .fecha-input {
+      max-width: 100%;
+    }
+    
+    .tabla-alumnos th,
+    .tabla-alumnos td {
+      padding: 1rem;
+    }
+    
+    .notificacion {
+      top: auto;
+      bottom: 1rem;
+      right: 1rem;
+      left: 1rem;
+      max-width: none;
+      animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+  
+  /* Efectos especiales */
+  .alumno-presente {
+    position: relative;
+  }
+  
+  .alumno-presente::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--success-color);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }
+  
+  .alumno-ausente {
+    position: relative;
+  }
+  
+  .alumno-ausente::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--danger-color);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }

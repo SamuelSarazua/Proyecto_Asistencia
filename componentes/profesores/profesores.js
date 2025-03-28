@@ -2,18 +2,15 @@ export function profesores() {
     const contenedor = document.createElement('div');
     contenedor.className = "contenedor-profesores";
 
-    // Verificar sesión
     const profesorData = JSON.parse(sessionStorage.getItem('profesor'));
     if (!profesorData) {
         redirigirALogin();
         return contenedor;
     }
 
-    // Header
     const header = document.createElement('header');
     header.className = "header-profesor";
 
-    // Información del profesor
     const infoProfesor = document.createElement('div');
     infoProfesor.className = "info-profesor";
 
@@ -26,7 +23,6 @@ export function profesores() {
     infoProfesor.appendChild(nombreProfesor);
     infoProfesor.appendChild(emailProfesor);
 
-    // Botón de cerrar sesión
     const logoutBtn = document.createElement('button');
     logoutBtn.className = "logout-btn";
     logoutBtn.textContent = "Cerrar sesión";
@@ -38,7 +34,6 @@ export function profesores() {
     header.appendChild(infoProfesor);
     header.appendChild(logoutBtn);
 
-    // Contenedor de grados
     const gradosContenedor = document.createElement('div');
     gradosContenedor.className = "grados-contenedor";
 
@@ -46,115 +41,78 @@ export function profesores() {
     gradosTitulo.className = "grados-titulo";
     gradosTitulo.textContent = "Grados a cargo:";
 
-    // Definir gradosLista aquí para que esté disponible en todo el componente
     const gradosLista = document.createElement('div');
     gradosLista.className = "grados-lista";
-
-    // Mensaje de carga
-    const cargando = document.createElement('p');
-    cargando.className = "cargando";
-    cargando.textContent = "Cargando grados...";
-    gradosLista.appendChild(cargando);
-
     gradosContenedor.appendChild(gradosTitulo);
     gradosContenedor.appendChild(gradosLista);
 
     contenedor.appendChild(header);
     contenedor.appendChild(gradosContenedor);
 
-    // Cargar grados
-    cargarGrados(gradosLista); // Pasamos gradosLista como parámetro
-
+    cargarGrados(gradosLista);
     return contenedor;
 }
 
-// Función para cargar grados (ahora recibe el contenedor como parámetro)
 async function cargarGrados(contenedor) {
     try {
         const response = await fetch('http://localhost:3000/grados');
-        
         if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            throw new Error("Error al cargar los grados");
         }
         
-        const data = await response.json();
-
+        const { grados } = await response.json();
+        
         // Limpiar contenedor
         while (contenedor.firstChild) {
             contenedor.removeChild(contenedor.firstChild);
         }
 
-        if (!data || !data.grados || data.grados.length === 0) {
+        if (!grados || grados.length === 0) {
             const mensaje = document.createElement('p');
             mensaje.textContent = "No hay grados asignados";
             contenedor.appendChild(mensaje);
             return;
         }
 
-        // Crear elementos de grado
-        data.grados.forEach(grado => {
+        // Crear cards para cada grado
+        grados.forEach(grado => {
             const gradoCard = document.createElement('div');
             gradoCard.className = "grado-card";
             
             const gradoNombre = document.createElement('h4');
             gradoNombre.textContent = grado.Nombre_Grado;
             
-            const gradoInfo = document.createElement('p');
-            gradoInfo.textContent = "Ver asistencia";
+            const gradoAccion = document.createElement('p');
+            gradoAccion.textContent = "Registrar asistencia";
             
             gradoCard.appendChild(gradoNombre);
-            gradoCard.appendChild(gradoInfo);
+            gradoCard.appendChild(gradoAccion);
             
-            // Hacer clickeable toda la tarjeta
             gradoCard.style.cursor = "pointer";
-            gradoCard.addEventListener('click', () => {
-                cargarVistaAsistencia(grado.id);
-            });
+            gradoCard.addEventListener('click', () => cargarVistaAsistencia(grado.id));
             
             contenedor.appendChild(gradoCard);
         });
-
     } catch (error) {
-        console.error("Error al cargar grados:", error);
-        
-        // Limpiar contenedor
-        while (contenedor.firstChild) {
-            contenedor.removeChild(contenedor.firstChild);
-        }
-        
-        const errorMsg = document.createElement('p');
-        errorMsg.className = "error";
-        errorMsg.textContent = "Error al cargar los grados";
-        contenedor.appendChild(errorMsg);
+        const errorMensaje = document.createElement('p');
+        errorMensaje.textContent = error.message;
+        contenedor.appendChild(errorMensaje);
     }
 }
 
 function cargarVistaAsistencia(gradoId) {
     const app = document.getElementById('app') || document.body;
-    
-    // Mostrar carga mientras se cambia de vista
-    const cargaDiv = document.createElement('div');
-    cargaDiv.className = "carga-vista";
-    cargaDiv.textContent = "Cargando asistencia...";
-    app.textContent = ''; // Limpiar
-    app.appendChild(cargaDiv);
-    
-    import('./asistencia.js').then(module => {
-        // Limpiar completamente
-        app.textContent = '';
-        app.appendChild(module.asistencia(gradoId));
-    }).catch(error => {
-        console.error("Error al cargar vista:", error);
-        app.textContent = '';
-        const errorMsg = document.createElement('p');
-        errorMsg.className = "error-vista";
-        errorMsg.textContent = "Error al cargar la asistencia";
-        app.appendChild(errorMsg);
-    });
+    app.innerHTML = '';
+    import('../asistencia/asistencia.js')
+        .then(module => {
+            app.appendChild(module.asistencia(gradoId));
+        })
+        .catch(() => {
+            app.textContent = "Error al cargar la asistencia";
+        });
 }
 
 function redirigirALogin() {
-    // Forzar recarga para limpiar el estado
-    window.location.href = '/login.html';
+    window.location.href = '../login/login.js';
     window.location.reload();
 }
